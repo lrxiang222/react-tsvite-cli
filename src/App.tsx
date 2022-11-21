@@ -1,38 +1,19 @@
 /*
  * @Author: kime
- * @Date: 2022-11-18 15:20:05
+ * @Date: 2022-06-28 16:32:13
  * @LastEditors: kime
- * @LastEditTime: 2022-11-18 15:26:56
- * @Description: 
+ * @LastEditTime: 2022-11-21 15:13:03
+ * @Description: 根组件
  */
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+import PageRoutes from "./routes";
+import "./App.scss";
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-    </div>
-  )
+function App () {
+    return (
+        <div className="App">
+            <PageRoutes />
+        </div>
+    );
 }
-
-export default App
+export default App;

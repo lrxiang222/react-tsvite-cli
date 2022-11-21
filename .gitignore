@@ -24,3 +24,4 @@ yarn-debug.log*
 yarn-error.log*
 /react-tsvite-cli
 /react-tsvite-cli.pub
+/*.lock
