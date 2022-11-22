@@ -2,17 +2,31 @@
  * @Author: kime
  * @Date: 2022-11-18 15:20:05
  * @LastEditors: kime
- * @LastEditTime: 2022-11-21 15:57:58
+ * @LastEditTime: 2022-11-22 09:29:30
  * @Description: 
  */
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import reactLogo from '../../assets/react.svg'
+import { homeTalentexpress } from '../../services/api'
 import './home.scss'
 
 function HomePage () {
+
+    //设置页面普通的state值
     const [count, setCount] = useState(0)
+
+    //获取路由对象
     const navigate = useNavigate();
+
+    //获取API的接口数据
+    const getApiData = async () => {
+        let params = {};
+        let result = await homeTalentexpress(params);
+        console.log('====================================');
+        console.log("get Api data result:================", result);
+        console.log('====================================');
+    }
 
     return (
         <div className="homepage">
@@ -28,6 +42,11 @@ function HomePage () {
             <div className="card">
                 <button onClick={() => setCount((count) => count + 1)}>
                     count is {count}
+                </button>
+                <button onClick={() => {
+                    getApiData();
+                }}>
+                    Get API Data
                 </button>
                 <button onClick={() => {
                     navigate("/notFound");
