@@ -1,47 +1,16 @@
 /*
  * @Author: kime
- * @Date: 2022-11-21 15:03:40
+ * @Date: 2022-06-29 17:34:01
  * @LastEditors: kime
- * @LastEditTime: 2022-11-21 15:57:37
- * @Description: 
+ * @LastEditTime: 2023-04-04 15:09:42
+ * @Description: 跟路由管理
  */
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import HomePage from "../pages/homepage"; //首页
-import LoadingPage from "../pages/loadingpage/index"; //加载过渡页面
-import NotFound from "../pages/notfound"; //404页面
+import { useRoutes } from "react-router-dom"; //使用路由的hooks
+import { rootRouter } from "./routes"; //路由的列表管理
 
-
-// React 组件懒加载
-const Lazyloadpage = React.lazy(() => import("../pages/lazyloadpage/index"));
-const ReduxDemoPages = React.lazy(() => {
-    return import("../pages/reduxpages/index");
-})
-
+//页面容器
 const PageRoutes = () => {
-    return (
-        <Router>
-            <Routes>
-                <Route path="/" element={<HomePage />}></Route>
-                <Route
-                    path="/lazyloadpage"
-                    element={
-                        <React.Suspense fallback={<LoadingPage />} >
-                            <Lazyloadpage />
-                        </React.Suspense>
-                    }
-                ></Route>
-                <Route
-                    path="/reduxdemopage"
-                    element={
-                        <React.Suspense fallback={<LoadingPage />} >
-                            <ReduxDemoPages />
-                        </React.Suspense>
-                    }
-                ></Route>
-                <Route path="*" element={<NotFound />}></Route>
-            </Routes>
-        </Router>)
-}
-
+    const routes = useRoutes(rootRouter);
+    return routes;
+};
 export default PageRoutes;

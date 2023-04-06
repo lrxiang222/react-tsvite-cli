@@ -35,5 +35,14 @@ function getCancelToken (requestId: string): CancelToken {
     return nextCancelSource.token;
 }
 
+//删除所有的请求
+function removeAllAxiosPending () {
+    cancelSources.forEach(cancel => {
+        console.log("取消对象", cancel);
+    });
+    cancelSources.clear();
+}
+
+
 //导出工具
-export { getCancelToken, cancelLastRequest };
+export { getCancelToken, cancelLastRequest, removeAllAxiosPending };
